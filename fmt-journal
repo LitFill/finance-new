@@ -1,0 +1,73 @@
+#!/bin/bash
+# fmt-journal — Rapikan jurnal hledger tanpa menghapus header directives
+# Usage: ./fmt-journal [FILE.journal]
+
+set -euo pipefail
+
+JOURNAL="${1:-$(ls -1 *.journal 2>/dev/null | sort -r | head -n1)}"
+if [ -z "$JOURNAL" ] || [ ! -f "$JOURNAL" ]; then
+    echo "Usage: ./fmt-journal <FILE.journal>" >&2
+    exit 1
+fi
+
+echo "» Formatting: $JOURNAL"
+
+TMP=$(mktemp) HEADER=$(mktemp) BODY_RAW=$(mktemp) BODY_FMT=$(mktemp)
+trap "rm -f '$TMP' '$HEADER' '$BODY_RAW' '$BODY_FMT'" EXIT
+
+# ── 1. Pisahkan header dan transaksi ──
+# Header = semua baris SEBELUM baris pertama yang dimulai tanggal YYYY-MM-DD
+# Transaksi = sisanya
+
+in_header=1
+while IFS= read -r line || [ -n "$line" ]; do
+    if [ "$in_header" -eq 1 ]; then
+        if echo "$line" | grep -qE '^[0-9]{4}-[0-9]{2}-[0-9]{2}'; then
+            in_header=0
+            printf '%s\n' "$line" >> "$BODY_RAW"
+        else
+            printf '%s\n' "$line" >> "$HEADER"
+        fi
+    else
+        printf '%s\n' "$line" >> "$BODY_RAW"
+    fi
+done < "$JOURNAL"
+
+# ── 2. Format transaksi pakai hledger print ──
+if [ -s "$BODY_RAW" ]; then
+    # Buat file sementara yang HANYA berisi transaksi
+    hledger print -f "$BODY_RAW" 2>/dev/null | sed '/^$/d' | awk '
+        /^[0-9]/ { if (n > 0) print ""; n++ }
+        { print }
+    END { if (n > 0) print "" }
+    ' > "$BODY_FMT"
+else
+    > "$BODY_FMT"
+fi
+
+# ── 3. Rekonstruksi: header + 1 baris kosong + transaksi ──
+cp "$JOURNAL" "${JOURNAL}.backup"
+
+# Header: hapus trailing blank berlebihan, pastikan akhirnya newline
+if [ -s "$HEADER" ]; then
+    # Hapus baris kosong beruntun di akhir header, sisakan 0 baris kosong
+    sed -e :a -e '/^\s*$/{$d;N;};/\n\s*$/ba' "$HEADER" > "$TMP"
+    cat "$TMP" > "$HEADER"
+fi
+
+# Gabung
+> "$TMP"
+if [ -s "$HEADER" ]; then
+    cat "$HEADER" >> "$TMP"
+    echo "" >> "$TMP"
+fi
+if [ -s "$BODY_FMT" ]; then
+    # Hapus trailing blank dari body juga
+    sed -e :a -e '/^\s*$/{$d;N;};/\n\s*$/ba' "$BODY_FMT" >> "$TMP"
+    echo "" >> "$TMP"
+fi
+
+mv "$TMP" "$JOURNAL"
+
+echo "» Backup: ${JOURNAL}.backup"
+echo "» Done."

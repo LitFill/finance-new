@@ -1,0 +1,155 @@
+; ============================================================
+; Jurnal Keuangan Master LitFill — Tahun 2026
+; Format: hledger
+; ============================================================
+
+; --- Deklarasi Commodity ---
+commodity Rp 1.000,00
+commodity memories 1.
+commodity mgEmas 1.
+
+; --- Default Commodity ---
+D Rp 1.000,00
+
+; --- Deklarasi Akun ---
+account assets:cash
+account assets:receh
+account assets:pondok
+account assets:bank:bri
+account assets:bank:bni
+account assets:bank:dana
+account assets:arcaea:memories
+account assets:emas:bri
+
+account liabilities:shopee pay
+account liabilities:shopee pay:item
+account liabilities:batir
+
+account equity:opening-balances
+account equity:recount
+account equity:belum tercatat
+account equity:unknown
+account equity:dana
+account equity:duit
+account equity:kredit shopee pay
+
+account income:hutang
+account income:hutang:batir
+account income:hibah:batir
+account income:bisyaroh:pdf
+account income:bisyaroh:ukm coding
+account income:pondok:bendahara
+account income:pondok:panitia solawat
+account income:transfer
+account income:transfer:bri
+account income:unknown
+account income:arcaea:memories
+account income:lowiro:memories
+account income:cash
+
+account expenses:makan
+account expenses:makan:jajan
+account expenses:makan:buah
+account expenses:makan:mayoran
+account expenses:makan:syukuran
+account expenses:sandang
+account expenses:sandang:celana
+account expenses:sandang:loundry
+account expenses:sandang:sandal
+account expenses:pendidikan
+account expenses:pendidikan:kitab
+account expenses:pendidikan:wisuda
+account expenses:pendidikan:revisi skripsi
+account expenses:kamar
+account expenses:kamar:tisu
+account expenses:kamar:util
+account expenses:komunikasi
+account expenses:komunikasi:kuota
+account expenses:kuota:telkomsel
+account expenses:kuota:mama
+account expenses:kuota:bapak
+account expenses:langganan
+account expenses:langganan:streaming
+account expenses:langganan:microsoft
+account expenses:langganan:microsoft:onedrive
+account expenses:hobi
+account expenses:hobi:arcaea:premium
+account expenses:hobi:arcaea:chart
+account expenses:hobi:steam
+account expenses:hobi:vtuber
+account expenses:motor
+account expenses:motor:bensin
+account expenses:motor:cuci
+account expenses:motor:servis:cvt
+account expenses:motor:oli
+account expenses:motor:hardware
+account expenses:bank:bri:admin fee
+account expenses:bank:bri:admin kartu
+account expenses:bank:bri:admin rekening
+account expenses:bank:bri:denda
+account expenses:bank:bni:admin fee
+account expenses:bank:bni:admin kartu
+account expenses:bank:bni:admin rekening
+account expenses:bank:bni:denda
+account expenses:dilah
+account expenses:dilah:sangu
+account expenses:dilah:jajan
+account expenses:dilah:kuota
+account expenses:dilah:sandang
+account expenses:ojan
+account expenses:ojan:sangu
+account expenses:ojan:sandang:sarung
+account expenses:donasi:hisap
+account expenses:donasi:teman
+account expenses:alfa:pembulatan
+account expenses:admin
+account expenses:pembayaran
+account expenses:transfer
+account expenses:unknown
+
+; --- Price Directives ---
+P 2026-08-24 mgEmas Rp 2.505,00
+; P 2026-08-24 memories Rp 100,00
+
+; --- Budget / Forecast Periodik ---
+; contoh:
+; ~ monthly  Langganan Streaming
+;     expenses:langganan:streaming          Rp 50.000,00
+;     income:unknown
+;
+; ~ monthly  Kuota
+;     expenses:komunikasi:kuota             Rp 100.000,00
+;     income:unknown
+
+; ============================================================
+; PEMBUKAAN / OPENING BALANCES
+; ============================================================
+
+2026-01-01 * Opening Balances | Mulai buku tahun 2026
+    assets:cash                 Rp 157.000,00
+    assets:receh                      Rp 0,00
+    assets:pondok                     Rp 0,00
+    assets:bank:bri             Rp 650.488,00
+    assets:bank:bni              Rp 33.077,00
+    assets:bank:dana              Rp 7.279,00
+    assets:arcaea:memories         0 memories
+    assets:emas:bri                  0 mgEmas
+    liabilities:shopee pay       Rp 31.525,00
+    liabilities:batir                 Rp 0,00
+    equity:opening-balances    Rp -879.369,00
+
+2026-08-24 * Self | Stok opname emas BRI
+    assets:emas:bri     83.2 mgEmas
+    equity:recount
+
+2026-08-25 * Alfamart | Belanja selai kacang, coklat, kasih temen
+    expenses:makan               Rp 27.100,00  ; selai kacang
+    expenses:makan:jajan         Rp 11.300,00  ; coklat silverqueen
+    expenses:alfa:pembulatan        Rp 100,00  ; pembulatan
+    expenses:donasi:teman           Rp 500,00  ; kasih ke temen
+    assets:cash                 Rp -39.000,00
+
+
+2026-08-25 * Kedai Doa Ibu | Ayam geprek
+    expenses:makan     Rp 13.000,00
+    assets:cash        Rp -13.000,00
