@@ -51,6 +51,7 @@ account expenses:makan
 account expenses:makan:jajan
 account expenses:makan:buah
 account expenses:makan:mayoran
+account expenses:makan:stok
 account expenses:makan:syukuran
 account expenses:sandang
 account expenses:sandang:celana
@@ -143,7 +144,7 @@ P 2026-08-24 mgEmas Rp 2.505,00
     equity:recount
 
 2026-08-25 * Alfamart | Belanja selai kacang, coklat, kasih temen
-    expenses:makan               Rp 27.100,00  ; selai kacang
+    expenses:makan:stok          Rp 27.100,00  ; selai kacang
     expenses:makan:jajan         Rp 11.300,00  ; coklat silverqueen
     expenses:alfa:pembulatan        Rp 100,00  ; pembulatan
     expenses:donasi:teman           Rp 500,00  ; kasih ke temen
@@ -152,4 +153,30 @@ P 2026-08-24 mgEmas Rp 2.505,00
 2026-08-25 * Kedai Doa Ibu | Ayam geprek
     expenses:makan     Rp 13.000,00
     assets:cash       Rp -13.000,00
+
+2026-08-25 * Koperasi Irfan | Jajan lontong nasi bakar & molen pisang
+    expenses:makan:jajan     Rp 8.000,00
+    assets:cash             Rp -8.000,00
+
+2026-08-25 * Self | Makan mie ayam 2 porsi bareng temen, temen bayar separuh
+    expenses:makan      Rp 13.000,00
+    assets:bank:bri    Rp -26.000,00
+    assets:cash         Rp 13.000,00
+
+2026-08-26 * Bengkel | Ganti oli motor
+    expenses:motor:oli     Rp 80.000,00
+    assets:cash           Rp -80.000,00
+
+2026-08-26 * Bakul depan Mushola | Beli 2 pir & melon potong dadu
+    expenses:makan:buah     Rp 20.000,00
+    assets:cash            Rp -20.000,00
+
+2026-08-27 * Koperasi Irfan | Tukar uang BRI ke cash (admin Rp 5.000)
+    assets:cash                     Rp 300.000,00
+    expenses:bank:bri:admin fee       Rp 5.000,00
+    assets:bank:bri                Rp -305.000,00
+
+2026-08-28 * Koperasi Irfan | Es batu & roti
+    expenses:makan:jajan     Rp 5.000,00
+    assets:cash             Rp -5.000,00
 

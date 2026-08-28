@@ -1,0 +1,5 @@
+# backup file dari fmt-journal
+*.backup
+
+# output laporan HTML
+docs/

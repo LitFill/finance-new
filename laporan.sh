@@ -82,9 +82,14 @@ EOF
   hledger bal expenses -f "$JOURNAL" 2>&1 || true
   echo '</pre></div>'
 
+  # --- Income Statement ---
+  echo '<div class="card"><h2>📈 Income Statement</h2><pre>'
+  hledger is -f "$JOURNAL" 2>&1
+  echo '</pre></div>'
+
   # --- Cashflow ---
   echo '<div class="card"><h2>🌊 Cashflow</h2><pre>'
-  hledger print -f "$JOURNAL" 2>&1 || true
+  hledger cf -f "$JOURNAL" 2>&1
   echo '</pre></div>'
 
   echo '<footer>Generated on'
