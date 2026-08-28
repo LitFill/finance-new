@@ -1,21 +1,51 @@
 #!/bin/bash
 # laporan.sh — Generate laporan HTML jurnal keuangan
-# Usage: ./laporan.sh [TAHUN]
-# Default TAHUN: tahun sekarang
+# Usage: ./laporan.sh [-f FILE.journal] [-o OUTFILE] [TAHUN]
+# Default: TAHUN = tahun sekarang, jurnal = TAHUN.journal,
+#          output = docs/laporan-TAHUN.html
 
 set -euo pipefail
 
+usage() {
+    echo "Usage: ./laporan.sh [-f FILE.journal] [-o OUTFILE] [TAHUN]" >&2
+    echo "  TAHUN       tahun laporan (default: tahun sekarang)" >&2
+    echo "  -f FILE     file jurnal (default: TAHUN.journal)" >&2
+    echo "  -o OUTFILE  path output HTML (default: docs/laporan-TAHUN.html)" >&2
+    exit 1
+}
+
+JOURNAL="" OUTFILE=""
+while getopts ":f:o:h" opt; do
+    case "$opt" in
+        f) JOURNAL="$OPTARG" ;;
+        o) OUTFILE="$OPTARG" ;;
+        h) usage ;;
+        \\?) echo "Error: opsi tidak dikenal: -$OPTARG" >&2; usage ;;
+        :)  echo "Error: -$OPTARG butuh argumen" >&2; usage ;;
+    esac
+done
+shift $((OPTIND - 1))
+
+if [ $# -gt 1 ]; then
+    echo "Error: terlalu banyak argumen." >&2
+    usage
+fi
+
 TAHUN="${1:-$(date +%Y)}"
-JOURNAL="${TAHUN}.journal"
-OUTDIR="docs"
-OUTFILE="${OUTDIR}/laporan-${TAHUN}.html"
+if ! echo "$TAHUN" | grep -qE '^[0-9]{4}$'; then
+    echo "Error: TAHUN harus 4 digit angka, dapat: '$TAHUN'" >&2
+    usage
+fi
+
+[ -n "$JOURNAL" ] || JOURNAL="${TAHUN}.journal"
+[ -n "$OUTFILE" ] || OUTFILE="docs/laporan-${TAHUN}.html"
 
 if [ ! -f "$JOURNAL" ]; then
     echo "Error: file jurnal '$JOURNAL' tidak ditemukan." >&2
     exit 1
 fi
 
-mkdir -p "$OUTDIR"
+mkdir -p "$(dirname "$OUTFILE")"
 
 echo "» Membangun laporan tahun $TAHUN..."
 echo "» Output: $OUTFILE"
