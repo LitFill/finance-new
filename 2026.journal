@@ -194,3 +194,15 @@ P 2026-08-24 mgEmas Rp 2.505,00
     assets:cash          Rp 7.000,00
     assets:bank:bri    Rp -20.000,00
 
+2026-08-29 * Self | Recount memories: sisa bulan lalu belum tercatat
+    assets:arcaea:memories     90 memories
+    equity:recount            -90 memories
+
+2026-08-29 * Google Play | Beli 510 Memories Arcaea
+    assets:arcaea:memories    510 memories @@ Rp 98.790,00
+    assets:bank:bri                          Rp -98.790,00
+
+2026-08-29 * lowiro | Beli pack Divine Oblivion
+    expenses:hobi:arcaea:chart     500 memories
+    assets:arcaea:memories        -500 memories
+
