@@ -5,10 +5,10 @@ Pencatatan keuangan pribadi pakai **hledger**.
 ## Struktur
 
 - `2026.journal` — jurnal tahun berjalan (entri + header directives)
-- `AGENT.md` — instruksi asisten (pi)
+- `.omp/AGENTS.md` — instruksi asisten (omp)
 - `fmt-journal` — rapikan format jurnal tanpa menghapus header
 - `laporan.sh` — generate laporan HTML ke `docs/`
-- `.pi/skills/hledger-finance/` — skill pi pakai pencatatan
+- `.omp/skills/hledger-finance/` — skill omp untuk pencatatan
 - `.githooks/pre-commit` — validasi otomatis sebelum commit
 
 ## Tools
@@ -46,6 +46,6 @@ hledger cf -f 2026.journal
    budget periodik, price directive) dari jurnal tahun lalu, tanpa entri.
 2. Tambahkan `include <TAHUN LALU>.journal` di paling atas jurnal baru
    supaya saldo pembuka/riwayat tetap terhitung.
-3. Update referensi tahun di README, AGENT.md, dan skill.
+3. Update referensi tahun di README, `.omp/AGENTS.md`, dan skill.
 
-Detail skill: `.pi/skills/hledger-finance/SKILL.md`
+Detail skill: `.omp/skills/hledger-finance/SKILL.md`

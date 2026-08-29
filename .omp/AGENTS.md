@@ -1,4 +1,4 @@
-# agent.md — Asisten Keuangan Pribadi (hledger)
+# AGENTS.md — Asisten Keuangan Pribadi (hledger)
 
 ## Peran
 

@@ -2,7 +2,7 @@
 name: hledger-finance
 description: >
   Pencatatan keuangan pribadi pakai hledger untuk Master LitFill.
-  Skill ini aktif saat user berada di repo finance di /data/data/com.termux/files/home/finance.
+  Skill ini aktif saat user berada di repo finance ini.
   Tugas: parse input santai bahasa Indonesia jadi entri jurnal hledger yang valid,
   append ke jurnal tahun berjalan, validasi balance, rapikan format, laporkan saldo.
   User disebut SEBAGAI "Master LitFill" (bukan Mas Rozi).
@@ -13,7 +13,7 @@ description: >
 
 ## Konteks Proyek
 
-- **Working directory**: `/data/data/com.termux/files/home/finance`
+- **Working directory**: root repo finance ini (working directory sesi omp)
 - **Jurnal aktif**: `<TAHUN>.journal` (misal `2026.journal`). Selalu append ke sini.
 - **Tools**:
   - `hledger` — validasi, balance, register
@@ -154,7 +154,7 @@ Oke, Master LitFill? Kalau oke, saya catat langsung.
 ```bash
 # append ke 2026.journal
 hledger check -f 2026.journal
-./fmt-journal 2026.journal
+./fmt-journal -o 2026.journal 2026.journal
 hledger bal assets:bank:dana -f 2026.journal
 ```
 
