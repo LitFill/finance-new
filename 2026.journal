@@ -210,3 +210,7 @@ P 2026-08-24 mgEmas Rp 2.505,00
     expenses:makan:jajan     Rp 13.000,00
     assets:cash             Rp -13.000,00
 
+2026-09-01 * Koperasi Irfan | Sayur tempe, risoles, ImCoco, 3 mie rebus
+    expenses:makan     Rp 23.000,00
+    assets:cash       Rp -23.000,00
+
