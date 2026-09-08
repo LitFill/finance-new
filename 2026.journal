@@ -258,3 +258,11 @@ P 2026-08-24 mgEmas Rp 2.505,00
     liabilities:shopee pay     Rp 31.525,00
     assets:bank:bri           Rp -31.525,00
 
+2026-09-07 * Koperasi Irfan | Roti 2 buah dan es batu
+    expenses:makan:jajan     Rp 5.000,00
+    assets:cash             Rp -5.000,00
+
+2026-09-07 * Nasi Goreng Portugal | Nasi goreng
+    expenses:makan     Rp 13.000,00
+    assets:cash       Rp -13.000,00
+
