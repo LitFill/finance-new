@@ -242,3 +242,19 @@ P 2026-08-24 mgEmas Rp 2.505,00
     assets:receh                 Rp -5.000,00
     liabilities:loundry          Rp -8.000,00
 
+2026-09-05 * Bazar | Peci putih
+    expenses:sandang     Rp 15.000,00
+    assets:cash         Rp -15.000,00
+
+2026-09-05 * Koperasi Irfan | Lauk chicken dan es batu
+    expenses:makan     Rp 11.000,00
+    assets:cash       Rp -11.000,00
+
+2026-09-06 * Telkomsel | Paket data 3,5 GB untuk mama
+    expenses:kuota:mama     Rp 26.500,00
+    assets:bank:bri        Rp -26.500,00
+
+2026-09-06 * BRI | Bayar liabilities ShopeePay (lunas)
+    liabilities:shopee pay     Rp 31.525,00
+    assets:bank:bri           Rp -31.525,00
+
