@@ -266,3 +266,35 @@ P 2026-08-24 mgEmas Rp 2.505,00
     expenses:makan     Rp 13.000,00
     assets:cash       Rp -13.000,00
 
+2026-09-08 * Telkomsel | Paket data 6,5 GB untuk bapak
+    expenses:kuota:bapak     Rp 61.500,00
+    assets:bank:bri         Rp -61.500,00
+
+2026-09-10 * Angkringan | Sate telor puyuh
+    expenses:makan     Rp 3.000,00
+    assets:cash       Rp -3.000,00
+
+2026-09-10 * Kedai Doa Ibu | Ayam geprek
+    expenses:makan     Rp 12.000,00
+    assets:cash       Rp -12.000,00
+
+2026-09-10 * Cuci Motor Sawangan | Cuci motor
+    expenses:motor:cuci     Rp 10.000,00
+    assets:cash            Rp -10.000,00
+
+2026-09-10 * Bakso Urat Sawangan | Bakso urat + es teh manis
+    expenses:makan     Rp 16.000,00
+    assets:cash       Rp -16.000,00
+
+2026-09-12 * Self | Kiriman dari orang tua 500rb
+    assets:bank:bri     Rp 500.000,00
+    income:transfer:bri  Rp -500.000,00
+2026-09-11 * Koperasi Irfan | Nasi dan ayam chicken + es batu
+    expenses:makan     Rp 10.000,00
+    assets:cash        Rp -10.000,00
+2026-09-12 * Koperasi Irfan | Saos botol Belibis
+    expenses:makan:stok   Rp 9.000,00
+    assets:cash        
+2026-09-12 * Koperasi Irfan | lauk ayam + sayur + es batu + saos
+    expenses:makan     Rp 9.000,00
+    assets:cash        
