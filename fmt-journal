@@ -53,7 +53,7 @@ done < "$JOURNAL"
 # ── 2. Format transaksi pakai hledger print ──
 if [ -s "$BODY_RAW" ]; then
     # Buat file sementara yang HANYA berisi transaksi
-    hledger print -f "$BODY_RAW" 2>/dev/null | sed '/^$/d' | awk '
+    hledger print -f "$BODY_RAW" -x 2>/dev/null | sed '/^$/d' | awk '
         /^[0-9]/ { if (n > 0) print ""; n++ }
         { print }
     END { if (n > 0) print "" }
